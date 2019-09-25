@@ -22,7 +22,7 @@ public class Main
 {
     public static void main( String[] args ) throws UnknownHostException, PcapNativeException, EOFException, TimeoutException, NotOpenException
     {
-    	InetAddress addr = InetAddress.getByName("192.168.10.100");
+    	InetAddress addr = InetAddress.getByName("10.176.138.16");
     	PcapNetworkInterface nif = Pcaps.getDevByAddress(addr);
     	
     	int snapLen = 65536;
@@ -39,5 +39,8 @@ public class Main
     	IpV4Packet ipV4Packet = packet.get(IpV4Packet.class);
     	Inet4Address srcAddr = ipV4Packet.getHeader().getSrcAddr();
     	System.out.println(srcAddr);
+    	for(byte i: ipV4Packet.getRawData()) {
+    		System.out.print(i);
+    	}
     }
 }
