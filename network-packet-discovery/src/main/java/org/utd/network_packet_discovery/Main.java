@@ -20,9 +20,15 @@ import org.pcap4j.core.PcapNetworkInterface;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.pcap4j.core.PcapPacket;
 import org.pcap4j.core.Pcaps;
+import org.pcap4j.packet.ArpPacket;
+import org.pcap4j.packet.DnsPacket;
+import org.pcap4j.packet.EthernetPacket;
 import org.pcap4j.packet.IpV4Packet;
 import org.pcap4j.packet.Packet;
+import org.pcap4j.packet.UnknownPacket;
+import org.pcap4j.util.ByteArrays;
 import org.pcap4j.util.NifSelector;
+import org.utd.network_packet_discovery.util.EasyPacket;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -34,7 +40,7 @@ class NetworkListener extends Thread{
 	int id;
 	int counter = 0;
 	ObjectMapper mapper = new ObjectMapper();
-	List<PcapPacket> packets = new ArrayList<PcapPacket>();
+	List<EasyPacket> packets = new ArrayList<EasyPacket>();
 	File file = new File("result.txt");
 	PrintWriter out;
 	
@@ -65,16 +71,23 @@ class NetworkListener extends Thread{
                 public void gotPacket(PcapPacket packet) {
                     // Override the default gotPacket() function and process packet
                 	IpV4Packet ipV4Packet = packet.get(IpV4Packet.class);
+
                 	Inet4Address srcAddr = ipV4Packet.getHeader().getSrcAddr();
                 	Inet4Address dstAddr  = ipV4Packet.getHeader().getDstAddr();
-                	System.out.println(id + ": " + srcAddr + " -> " + dstAddr);
+                	//System.out.println(id + ": " + srcAddr.getCanonicalHostName() + " -> " + dstAddr.getHostAddress());
                 	
                 	//||dstAddr.toString().equals("/10.176.138.16")
                 	if(srcAddr.toString().equals("/10.176.138.16")) {
-                		System.out.println(handle.getTimestampPrecision());
-                        System.out.println(packet);
-                        packets.add(packet);
-                        if(counter++ == 10) {
+//                		System.out.println(ByteArrays.toHexString(packet.getRawData(), " "));
+//                		System.out.println(packet.getRawData().length);
+//                		System.out.println("========");
+                		System.out.println(packet.getPacket());
+
+//                      packets.add(packet);
+                		
+                		EasyPacket ep = new EasyPacket(packet);
+                		packets.add(ep);
+                        if(counter++ > 1) {
                         	System.out.println("Breaking!");
 							try {
 								handle.breakLoop();
@@ -111,8 +124,8 @@ class NetworkListener extends Thread{
     			PrintWriter out = new PrintWriter("result.txt"); 
     			// Java objects to JSON string - pretty-print
 				String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(packets);
-				System.out.println(jsonInString);
-				out.print(jsonInString);
+				//System.out.println(jsonInString);
+				//out.print(jsonInString);
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
