@@ -1,45 +1,63 @@
 package org.utd.network_packet_discovery.util;
 
+import java.io.Serializable;
 import java.net.Inet4Address;
-import java.time.Instant;
 
 import org.pcap4j.core.PcapPacket;
+import org.pcap4j.packet.EthernetPacket;
+import org.pcap4j.packet.EthernetPacket.EthernetHeader;
 import org.pcap4j.packet.IpV4Packet;
+import org.pcap4j.packet.TcpPacket;
+import org.pcap4j.packet.TcpPacket.TcpHeader;
 import org.pcap4j.packet.UnknownPacket;
-import org.pcap4j.util.ByteArrays;
 
-public class EasyPacket{
+public class EasyPacket implements Serializable{
+
+	public String timestamp;
 	
-	String timestamp;
+	public String mac_src_addr;
+	public String mac_dst_addr;
+	public String ethernet_type;
 	
-	String mac;
-	String net_card;
+	public String tcp_src_port;
+	public String tcp_dst_port;
 	
-	String src_addr_hostaddress;
-	String dst_addr_hostaddress;
-	String src_addr_hostname;
-	String dst_addr_hostname;
+	public String ipv4_src_addr_hostaddress;
+	public String ipv4_dst_addr_hostaddress;
+	public String ipv4_src_addr_hostname;
+	public String ipv4_dst_addr_hostname;
 	
-	String raw_byte_payload;
-	String hex_data_payload;
-	String char_data_payload;
+	public String char_data_payload;
 	
 	public EasyPacket(PcapPacket p) {
 		timestamp = p.getTimestamp().toString();
 		
+		//Ethernet Header
+		EthernetHeader ethernetHeader = p.get(EthernetPacket.class).getHeader();
+		mac_dst_addr = ethernetHeader.getDstAddr().toString();
+		mac_src_addr = ethernetHeader.getSrcAddr().toString();
+		
+		
+		//IpV4 Header
 		IpV4Packet ipV4Packet = p.get(IpV4Packet.class);
 		Inet4Address srcAddr = ipV4Packet.getHeader().getSrcAddr();
     	Inet4Address dstAddr  = ipV4Packet.getHeader().getDstAddr();
     	
-    	src_addr_hostaddress = srcAddr.getHostAddress();
-    	src_addr_hostname = srcAddr.getCanonicalHostName();
+    	ipv4_src_addr_hostaddress = srcAddr.getHostAddress();
+    	ipv4_src_addr_hostname = srcAddr.getCanonicalHostName();
     	
-    	dst_addr_hostaddress = dstAddr.getHostAddress();
-    	dst_addr_hostname = dstAddr.getCanonicalHostName();
+    	ipv4_dst_addr_hostaddress = dstAddr.getHostAddress();
+    	ipv4_dst_addr_hostname = dstAddr.getCanonicalHostName();
     	
+    	//TCP Header 
+    	TcpHeader tcpHeader = p.get(TcpPacket.class).getHeader();
+    	tcp_src_port = tcpHeader.getSrcPort().toString();
+    	tcp_dst_port = tcpHeader.getDstPort().toString();
+    	
+    	//Any Hex Data
     	if(p.getRawData() != null) {
-    		raw_byte_payload = p.getRawData().toString();
-    		hex_data_payload = p.get(UnknownPacket.class).toHexString();
+
+    		String hex_data_payload = p.get(UnknownPacket.class).toHexString();
     		char_data_payload = hexStringToCharString(hex_data_payload);
     	}
 	}
@@ -52,7 +70,7 @@ public class EasyPacket{
 			builder.append((char)res);
 		}
 
-		System.out.println(builder.toString());
 		return builder.toString();
 	}
+	
 }
