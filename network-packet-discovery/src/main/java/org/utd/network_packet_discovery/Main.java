@@ -19,7 +19,7 @@ public class Main
     	}
     	
     	//Accepts the interface selected (IP format), the IP it wishes to read from, and the max packets to scan
-    	NetworkScanner scanner = new NetworkScanner("10.176.138.22", "10.176.138.16", 20);
+    	NetworkScanner scanner = new NetworkScanner("10.176.138.22", "10.176.138.16", 10);
     	
     	scanner.scanNetwork();
     	

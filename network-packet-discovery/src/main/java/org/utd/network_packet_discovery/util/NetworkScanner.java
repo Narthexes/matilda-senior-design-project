@@ -88,9 +88,11 @@ public class NetworkScanner {
 	            	
 	            	IpV4Header ipV4Header = packet.get(IpV4Packet.class).getHeader();
 	            	Inet4Address srcAddr = ipV4Header.getSrcAddr();
-	 
+	            	Inet4Address dstAddr = ipV4Header.getDstAddr();
+	            	
 	            	//Either specifically searches for a src address, or accepts all
 	            	if(srcAddr.toString().equals("/" + targetSourceIp) ||
+	            			dstAddr.toString().equals("/" + targetSourceIp) ||
 	            			targetSourceIp.equals("")) {
 	            		System.out.println("Found packets... for " + "/" + targetSourceIp);
 	            		
