@@ -96,11 +96,14 @@ public class NetworkScanner {
 	            			targetSourceIp.equals("")) {
 	            		System.out.println("Found packets... for " + "/" + targetSourceIp);
 	            		
-	            		if(!sourceAddresses.contains(srcAddr.toString().replace("/", "")))
+	            		if(!sourceAddresses.contains(srcAddr.toString().replace("/", ""))) {
 	            			sourceAddresses.add(srcAddr.toString().replace("/", ""));
+	            		}
+	            			
 	            				
 	            		EasyPacket ep = new EasyPacket(packet);
 	            		packets.add(ep);
+
 	                    if(breakFlag) {
 	                    	System.out.println("Breaking!");
 							try {
