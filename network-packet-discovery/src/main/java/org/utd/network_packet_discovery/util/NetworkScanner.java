@@ -36,9 +36,11 @@ public class NetworkScanner {
 	
 	private List<EasyPacket> packets = new ArrayList<EasyPacket>();
 	
-	private Set<String> sourceAddresses = new HashSet<String>();
+	private Set<String> relatedAddresses = new HashSet<String>();
+	private List<Device> networkDevices = new ArrayList<Device>();
 	
-	int counter = 0;
+	private int totalPackets = 0;
+	private int matchedPackets = 0;
 	
 	public NetworkScanner(String interf, String target, int max) {
 		networkInterface = interf;
@@ -69,6 +71,7 @@ public class NetworkScanner {
 	}
 	
 	public void scanNetwork() {
+		breakFlag = false;
 		try
         {
 			InetAddress addr = InetAddress.getByName(networkInterface);
@@ -84,7 +87,7 @@ public class NetworkScanner {
 	        PacketListener listener = new PacketListener() {
 	            
 	            public void gotPacket(PcapPacket packet) {
-	            	counter++;
+	            	totalPackets++;
 	            	
 	            	IpV4Header ipV4Header = packet.get(IpV4Packet.class).getHeader();
 	            	Inet4Address srcAddr = ipV4Header.getSrcAddr();
@@ -96,15 +99,24 @@ public class NetworkScanner {
 	            			targetSourceIp.equals("")) {
 	            		System.out.println("Found packets... for " + "/" + targetSourceIp);
 	            		
-	            		if(!sourceAddresses.contains(srcAddr.toString().replace("/", ""))) {
-	            			sourceAddresses.add(srcAddr.toString().replace("/", ""));
+	            		matchedPackets++;
+	            		
+	            		//Add any unknown src or dst addresses linked to the target IP to the address list
+	            		String src = srcAddr.toString().replace("/", "");
+	            		String dst = dstAddr.toString().replace("/", "");
+	            		if(!relatedAddresses.contains(src)) { 
+	            			relatedAddresses.add(src);
+	            			networkDevices.add(new Device(src));
 	            		}
-	            			
-	            				
+	            		if(!relatedAddresses.contains(dst)) { 
+	            			relatedAddresses.add(dst);	
+	            			networkDevices.add(new Device(dst));
+	            		}
+	            		
 	            		EasyPacket ep = new EasyPacket(packet);
 	            		packets.add(ep);
 
-	                    if(breakFlag) {
+	                    if(breakFlag || matchedPackets >= maxPackets) {
 	                    	System.out.println("Breaking!");
 							try {
 								handle.breakLoop();
@@ -114,7 +126,7 @@ public class NetworkScanner {
 	                    }
 	            	}
 	                
-	            	if(counter % 10 == 0) {
+	            	if(totalPackets % 10 == 0) {
 	            		System.out.println("Scanning packets...");
 	            	}
 	            }
@@ -132,17 +144,17 @@ public class NetworkScanner {
         }
         catch (Exception e) 
         { 
-            // Throwing an exception 
             System.out.println ("Exception is caught."); 
         } 
 		
-		for(String s : getSourceAddresses())
+		for(String s : getRelatedAddresses())
 			System.out.println(s);
 		
-		outputToJson();
+		outputPacketsToJson();
+		outputDevicesToJson();
 	}
 	
-	public void outputToJson() {
+	public void outputPacketsToJson() {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd ");  
@@ -150,11 +162,10 @@ public class NetworkScanner {
 		   
 		try {
 			System.out.println("Packets found: " + packets.size());
-			PrintWriter out = new PrintWriter(dtf.format(now) + "result.txt");
+			PrintWriter out = new PrintWriter(dtf.format(now) + "packet_result.txt");
 			
 			// Java objects to JSON string - pretty-print
 			String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(packets);
-			System.out.println(jsonInString);
 			out.print(jsonInString);
 			out.close();
 		} catch (FileNotFoundException e) {
@@ -162,12 +173,39 @@ public class NetworkScanner {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		} 
-		
-		
 	}
 	
-	public Set<String> getSourceAddresses(){
-		return sourceAddresses;
+	public void outputDevicesToJson() {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd ");  
+		LocalDateTime now = LocalDateTime.now();  
+		   
+		try {
+			System.out.println("Packets found: " + packets.size());
+			PrintWriter out = new PrintWriter(dtf.format(now) + "device_result.txt");
+			
+			// Java objects to JSON string - pretty-print
+			String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(networkDevices);
+			out.print(jsonInString);
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} 
 	}
 	
+	public void stopNetworkScan() {
+		breakFlag = true;
+	}
+	public Set<String> getRelatedAddresses(){
+		return relatedAddresses;
+	}
+	
+	public List<Device> getNetworkDevices(){
+		return networkDevices;
+	}
+	
+
 }

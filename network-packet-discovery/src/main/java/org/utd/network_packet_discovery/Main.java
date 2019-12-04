@@ -23,7 +23,7 @@ public class Main
     	
     	scanner.scanNetwork();
     	
-    	scanner.outputToJson();
+    	//scanner.outputPacketsToJson();
     }
     
 }
