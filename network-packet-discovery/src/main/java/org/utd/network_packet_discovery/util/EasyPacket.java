@@ -33,6 +33,7 @@ public class EasyPacket implements Serializable{
 	public String char_data_payload = "";
 	
 	public EasyPacket(PcapPacket p) {
+		//System.out.println(p);
 		timestamp = p.getTimestamp().toString();
 		
 		//Ethernet Header
@@ -64,6 +65,9 @@ public class EasyPacket implements Serializable{
     		if(p.get(UnknownPacket.class) != null) {
     			String hex_data_payload = p.get(UnknownPacket.class).toHexString();
         		char_data_payload = hexStringToCharString(hex_data_payload);
+    		}
+    		else if(p.get(AbstractPacket.class) != null) {
+    			char_data_payload = p.get(AbstractPacket.class).toHexString();
     		}
     	}
     	

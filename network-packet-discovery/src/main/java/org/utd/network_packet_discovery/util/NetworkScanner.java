@@ -38,6 +38,7 @@ public class NetworkScanner {
 	
 	private boolean breakFlag = false;
 	
+	private List<PcapPacket> pcapPackets = new ArrayList<PcapPacket>();
 	private List<EasyPacket> packets = new ArrayList<EasyPacket>();
 	
 	private Set<String> relatedAddresses = new HashSet<String>();
@@ -107,11 +108,12 @@ public class NetworkScanner {
 	            	if(srcAddr.toString().equals("/" + targetSourceIp) ||
 	            			dstAddr.toString().equals("/" + targetSourceIp) ||
 	            			targetSourceIp.equals("")) {
+	            		
 	            		//Add output to Queue
 		            	outputQueue.add(srcAddr.toString() + " -> " + dstAddr.toString());
-	            		
-	            		
-	            		
+		            	pcapPackets.add(packet);
+		            	matchedPackets++;
+		            	
 	            		//Add any unknown src or dst addresses linked to the target IP to the address list
 	            		String src = srcAddr.toString().replace("/", "");
 	            		String dst = dstAddr.toString().replace("/", "");
@@ -124,15 +126,7 @@ public class NetworkScanner {
 	            			//networkDevices.add(new Device(dst));
 	            		}
 	            		
-	            		System.out.println("Creating Packet");
-	            		EasyPacket ep = new EasyPacket(packet);
 	            		
-	            		if(!ep.char_data_payload.equals("")) {
-	            			packets.add(ep);
-	            			matchedPackets++;
-	            		}
-	            		
-	            		System.out.println("Packet size: " + packets.size());
 	            		
 	                    if(breakFlag || matchedPackets >= maxPackets) {
 	                    	outputQueue.add("Stopping Network Scan...");
@@ -146,7 +140,7 @@ public class NetworkScanner {
 	                    
 	            	}
 	            	
-	            	if(totalPackets % 10 == 0) {
+	            	if(totalPackets % 30 == 0) {
                     	outputQueue.add("Scanning...(" + totalPackets + ")");
                     }
 	                
@@ -170,11 +164,19 @@ public class NetworkScanner {
         }
 		finally {
 			
+			outputQueue.add("Processing found packets...");
+			for(PcapPacket packet : pcapPackets) {
+				EasyPacket ep = new EasyPacket(packet);
+        		packets.add(ep);
+			}
+			
 			outputQueue.add("Starting OS Scan On Discovered Devices");
 	        for(String s : relatedAddresses) {
 	        	if(!s.equals(networkInterface)) {
 	        		outputQueue.add("Querying Device: " + s);
-	        		networkDevices.add(new Device(s));
+	        		Device d = new Device(s);
+	        		networkDevices.add(d);
+	        		outputQueue.add("Vulnerabilities found: " + d.vulnerabilities.size());
 	        	}
 	        }
 		        
@@ -207,6 +209,7 @@ public class NetworkScanner {
 	}
 	
 	public void outputDevicesToJson() {
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd ");  
