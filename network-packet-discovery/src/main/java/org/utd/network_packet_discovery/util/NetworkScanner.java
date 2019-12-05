@@ -161,7 +161,7 @@ public class NetworkScanner {
         }
         catch (InterruptedException e) 
         {
-        	System.out.println ("Loop interrupted."); 
+        	
         }
         catch (Exception e) 
         { 
