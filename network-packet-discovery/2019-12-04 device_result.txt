@@ -1,0 +1,6 @@
+[ {
+  "ip" : "10.176.138.16",
+  "os" : "",
+  "version" : "Microsoft Windows Server 2012 or Windows Server 2012 R2",
+  "vulnerabilities" : [ ]
+} ]

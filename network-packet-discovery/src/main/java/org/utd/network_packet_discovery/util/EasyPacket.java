@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.net.Inet4Address;
 
 import org.pcap4j.core.PcapPacket;
+import org.pcap4j.packet.AbstractPacket;
 import org.pcap4j.packet.EthernetPacket;
 import org.pcap4j.packet.EthernetPacket.EthernetHeader;
+import org.pcap4j.packet.FragmentedPacket;
+import org.pcap4j.packet.IpPacket;
 import org.pcap4j.packet.IpV4Packet;
 import org.pcap4j.packet.TcpPacket;
 import org.pcap4j.packet.TcpPacket.TcpHeader;
@@ -13,21 +16,21 @@ import org.pcap4j.packet.UnknownPacket;
 
 public class EasyPacket implements Serializable{
 
-	public String timestamp;
+	public String timestamp = "";
 	
-	public String mac_src_addr;
-	public String mac_dst_addr;
-	public String ethernet_type;
+	public String mac_src_addr = "";
+	public String mac_dst_addr = "";
+	public String ethernet_type = "";
 	
-	public String tcp_src_port;
-	public String tcp_dst_port;
+	public String tcp_src_port = "";
+	public String tcp_dst_port = "";
 	
-	public String ipv4_src_addr_hostaddress;
-	public String ipv4_dst_addr_hostaddress;
-	public String ipv4_src_addr_hostname;
-	public String ipv4_dst_addr_hostname;
+	public String ipv4_src_addr_hostaddress = "";
+	public String ipv4_dst_addr_hostaddress = "";
+	public String ipv4_src_addr_hostname = "";
+	public String ipv4_dst_addr_hostname = "";
 	
-	public String char_data_payload;
+	public String char_data_payload = "";
 	
 	public EasyPacket(PcapPacket p) {
 		timestamp = p.getTimestamp().toString();
@@ -54,12 +57,16 @@ public class EasyPacket implements Serializable{
     	tcp_src_port = tcpHeader.getSrcPort().toString();
     	tcp_dst_port = tcpHeader.getDstPort().toString();
     	
+
     	//Any Hex Data
     	if(p.getRawData() != null) {
-
-    		String hex_data_payload = p.get(UnknownPacket.class).toHexString();
-    		char_data_payload = hexStringToCharString(hex_data_payload);
+    		//System.out.println("Getting Hex Data");
+    		if(p.get(UnknownPacket.class) != null) {
+    			String hex_data_payload = p.get(UnknownPacket.class).toHexString();
+        		char_data_payload = hexStringToCharString(hex_data_payload);
+    		}
     	}
+    	
 	}
 	
 	private String hexStringToCharString(String hex) {

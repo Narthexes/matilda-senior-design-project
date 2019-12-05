@@ -11,6 +11,8 @@ public class Device {
 
 	public String ip;
 	public String os;
+	public String version;
+	
 	public List<String> vulnerabilities;
 	
 	public Device(String ipAddr) {
@@ -21,8 +23,9 @@ public class Device {
 	
 	public String pollForOS(String ip) {
 		String osVersion = "";
-		
-		String[] command = {"nmap", "-sV", "-O", ip};
+		String[] command = {"nmap", "-sV", "-O", " --script " +
+				"http-vuln-cve2011-3192,http-vuln-cve2011-3368,http-vuln-cve2015-1635,http-vuln-cve2017-5638", ip};
+		//"--script" "http-vuln-cve2011-3192""http-vuln-cve2011-3368,""http-vuln-cve2015-1635,""http-vuln-cve2017-5638"
 		ProcessBuilder pb = new ProcessBuilder(command);
 		pb.directory(new File(System.getProperty("user.home")));
 		
@@ -33,11 +36,20 @@ public class Device {
 			String output;
 			int i=0;
 			while((output = br.readLine()) != null) {
-		       if(i==18 || i == 20) {
-		        	System.out.println(output);
-		        	osVersion = "";
-		        }
-		        i++;
+		       if(i == 19) {
+		    	   String output2 = output;
+		    	   String output3 = output2.substring(output2.indexOf(":")+2);
+		    	   output3.trim();
+		    	   os = output3;
+		       }
+		       else if(i == 21) {
+		    	   String output2 = output;
+		    	   String output3 = output2.substring(output2.indexOf(":")+2);
+		    	   output3.trim();
+		    	   version = output3;
+		    	   break;
+		       }
+		       i++;
 			}
 			
 			int errorCode = p.waitFor();
@@ -50,7 +62,7 @@ public class Device {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		return osVersion;
 	}
 	

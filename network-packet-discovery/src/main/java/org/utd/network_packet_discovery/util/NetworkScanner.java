@@ -8,8 +8,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 import org.pcap4j.core.NotOpenException;
 import org.pcap4j.core.PacketListener;
@@ -42,10 +46,14 @@ public class NetworkScanner {
 	private int totalPackets = 0;
 	private int matchedPackets = 0;
 	
+	public BlockingQueue<String> outputQueue = new ArrayBlockingQueue<String>(1024);
+	
 	public NetworkScanner(String interf, String target, int max) {
 		networkInterface = interf;
 		targetSourceIp = target;
 		maxPackets = max;
+		
+		relatedAddresses.add(interf);
 	}
 	
 	public static List<InetAddress> getInterfaces() {
@@ -93,47 +101,60 @@ public class NetworkScanner {
 	            	Inet4Address srcAddr = ipV4Header.getSrcAddr();
 	            	Inet4Address dstAddr = ipV4Header.getDstAddr();
 	            	
+	            	
+	            	
 	            	//Either specifically searches for a src address, or accepts all
 	            	if(srcAddr.toString().equals("/" + targetSourceIp) ||
 	            			dstAddr.toString().equals("/" + targetSourceIp) ||
 	            			targetSourceIp.equals("")) {
-	            		System.out.println("Found packets... for " + "/" + targetSourceIp);
+	            		//Add output to Queue
+		            	outputQueue.add(srcAddr.toString() + " -> " + dstAddr.toString());
 	            		
-	            		matchedPackets++;
+	            		
 	            		
 	            		//Add any unknown src or dst addresses linked to the target IP to the address list
 	            		String src = srcAddr.toString().replace("/", "");
 	            		String dst = dstAddr.toString().replace("/", "");
 	            		if(!relatedAddresses.contains(src)) { 
 	            			relatedAddresses.add(src);
-	            			networkDevices.add(new Device(src));
+	            			//networkDevices.add(new Device(src));
 	            		}
 	            		if(!relatedAddresses.contains(dst)) { 
 	            			relatedAddresses.add(dst);	
-	            			networkDevices.add(new Device(dst));
+	            			//networkDevices.add(new Device(dst));
 	            		}
 	            		
+	            		System.out.println("Creating Packet");
 	            		EasyPacket ep = new EasyPacket(packet);
-	            		packets.add(ep);
-
+	            		
+	            		if(!ep.char_data_payload.equals("")) {
+	            			packets.add(ep);
+	            			matchedPackets++;
+	            		}
+	            		
+	            		System.out.println("Packet size: " + packets.size());
+	            		
 	                    if(breakFlag || matchedPackets >= maxPackets) {
-	                    	System.out.println("Breaking!");
+	                    	outputQueue.add("Stopping Network Scan...");
 							try {
 								handle.breakLoop();
 							} catch (NotOpenException e) {
 								e.printStackTrace();
 							}
 	                    }
+	                    
+	                    
 	            	}
-	                
+	            	
 	            	if(totalPackets % 10 == 0) {
-	            		System.out.println("Scanning packets...");
-	            	}
+                    	outputQueue.add("Scanning...(" + totalPackets + ")");
+                    }
+	                
 	            }
 	        };
 	
 	        // Tell the handle to loop using the listener we created
-	        handle.loop(maxPackets, listener);
+	        handle.loop(Integer.MAX_VALUE, listener);
 	
 	        // Cleanup when complete
 	        handle.close();
@@ -144,14 +165,25 @@ public class NetworkScanner {
         }
         catch (Exception e) 
         { 
+        	e.printStackTrace();
             System.out.println ("Exception is caught."); 
-        } 
+        }
+		finally {
+			
+			outputQueue.add("Starting OS Scan On Discovered Devices");
+	        for(String s : relatedAddresses) {
+	        	if(!s.equals(networkInterface)) {
+	        		outputQueue.add("Querying Device: " + s);
+	        		networkDevices.add(new Device(s));
+	        	}
+	        }
+		        
+	        outputQueue.add("Outputting Results...");
+			outputPacketsToJson();
+			outputDevicesToJson();
+		}
 		
-		for(String s : getRelatedAddresses())
-			System.out.println(s);
 		
-		outputPacketsToJson();
-		outputDevicesToJson();
 	}
 	
 	public void outputPacketsToJson() {
@@ -161,7 +193,6 @@ public class NetworkScanner {
 		LocalDateTime now = LocalDateTime.now();  
 		   
 		try {
-			System.out.println("Packets found: " + packets.size());
 			PrintWriter out = new PrintWriter(dtf.format(now) + "packet_result.txt");
 			
 			// Java objects to JSON string - pretty-print
@@ -182,7 +213,6 @@ public class NetworkScanner {
 		LocalDateTime now = LocalDateTime.now();  
 		   
 		try {
-			System.out.println("Packets found: " + packets.size());
 			PrintWriter out = new PrintWriter(dtf.format(now) + "device_result.txt");
 			
 			// Java objects to JSON string - pretty-print

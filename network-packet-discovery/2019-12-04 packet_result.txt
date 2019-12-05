@@ -1,0 +1,121 @@
+[ {
+  "timestamp" : "2019-12-05T04:25:53.750622Z",
+  "mac_src_addr" : "84:2b:2b:b4:59:c4",
+  "mac_dst_addr" : "84:2b:2b:b4:7d:3a",
+  "ethernet_type" : "",
+  "tcp_src_port" : "1504 (unknown)",
+  "tcp_dst_port" : "80 (HTTP)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.22",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.16",
+  "ipv4_src_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "ipv4_dst_addr_hostname" : "WAMPSERVER",
+  "char_data_payload" : "POST /awk.php HTTP/1.1\r\nHost: 10.176.138.16\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://10.176.138.16/etime\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 9\r\nConnection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n\r\nname=1234"
+}, {
+  "timestamp" : "2019-12-05T04:25:53.757216Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "HTTP/1.1 200 OK\r\nDate: Thu, 05 Dec 2019 04:25:53 GMT\r\nServer: Apache/2.4.39 (Win64) PHP/7.2.18\r\nX-Powered-By: PHP/7.2.18\r\nContent-Length: 1010\r\nKeep-Alive: timeout=5, max=100\r\nConnection: Keep-Alive\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<html>\r\n<body>\r\nEmp Number is [1234]<br>\r\n<!--Your mail is <br />\n<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>\n<tr><th align='left' bgcolor='#f57900' colspan=\"5\"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Undefined index: email in C:\\wamp64\\www\\awk.php on line <i>4</i></th></tr>\n<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>\n<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>\n<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0004</td><td bgcolor='#eeeeec' align='right'>402536</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\\wamp64\\www\\awk.php' bgcolor='#eeeeec'>...\\awk.php<b>:</b>0</td></tr>\n</table></font>\n.  -->\r\n</body>\r\n</html>"
+}, {
+  "timestamp" : "2019-12-05T04:25:57.720355Z",
+  "mac_src_addr" : "84:2b:2b:b4:59:c4",
+  "mac_dst_addr" : "84:2b:2b:b4:7d:3a",
+  "ethernet_type" : "",
+  "tcp_src_port" : "1504 (unknown)",
+  "tcp_dst_port" : "80 (HTTP)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.22",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.16",
+  "ipv4_src_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "ipv4_dst_addr_hostname" : "WAMPSERVER",
+  "char_data_payload" : "POST /awk.php HTTP/1.1\r\nHost: 10.176.138.16\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://10.176.138.16/etime\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 9\r\nConnection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n\r\nname=2345"
+}, {
+  "timestamp" : "2019-12-05T04:25:57.724731Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "HTTP/1.1 200 OK\r\nDate: Thu, 05 Dec 2019 04:25:57 GMT\r\nServer: Apache/2.4.39 (Win64) PHP/7.2.18\r\nX-Powered-By: PHP/7.2.18\r\nContent-Length: 1010\r\nKeep-Alive: timeout=5, max=99\r\nConnection: Keep-Alive\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<html>\r\n<body>\r\nEmp Number is [2345]<br>\r\n<!--Your mail is <br />\n<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>\n<tr><th align='left' bgcolor='#f57900' colspan=\"5\"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Undefined index: email in C:\\wamp64\\www\\awk.php on line <i>4</i></th></tr>\n<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>\n<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>\n<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0002</td><td bgcolor='#eeeeec' align='right'>402536</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\\wamp64\\www\\awk.php' bgcolor='#eeeeec'>...\\awk.php<b>:</b>0</td></tr>\n</table></font>\n.  -->\r\n</body>\r\n</html>"
+}, {
+  "timestamp" : "2019-12-05T04:26:01.921665Z",
+  "mac_src_addr" : "84:2b:2b:b4:59:c4",
+  "mac_dst_addr" : "84:2b:2b:b4:7d:3a",
+  "ethernet_type" : "",
+  "tcp_src_port" : "1504 (unknown)",
+  "tcp_dst_port" : "80 (HTTP)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.22",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.16",
+  "ipv4_src_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "ipv4_dst_addr_hostname" : "WAMPSERVER",
+  "char_data_payload" : "POST /awk.php HTTP/1.1\r\nHost: 10.176.138.16\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://10.176.138.16/etime\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 9\r\nConnection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n\r\nname=3456"
+}, {
+  "timestamp" : "2019-12-05T04:26:01.927762Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "HTTP/1.1 200 OK\r\nDate: Thu, 05 Dec 2019 04:26:01 GMT\r\nServer: Apache/2.4.39 (Win64) PHP/7.2.18\r\nX-Powered-By: PHP/7.2.18\r\nContent-Length: 1010\r\nKeep-Alive: timeout=5, max=98\r\nConnection: Keep-Alive\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<html>\r\n<body>\r\nEmp Number is [3456]<br>\r\n<!--Your mail is <br />\n<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>\n<tr><th align='left' bgcolor='#f57900' colspan=\"5\"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Undefined index: email in C:\\wamp64\\www\\awk.php on line <i>4</i></th></tr>\n<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>\n<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>\n<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0002</td><td bgcolor='#eeeeec' align='right'>402536</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\\wamp64\\www\\awk.php' bgcolor='#eeeeec'>...\\awk.php<b>:</b>0</td></tr>\n</table></font>\n.  -->\r\n</body>\r\n</html>"
+}, {
+  "timestamp" : "2019-12-05T04:26:05.183707Z",
+  "mac_src_addr" : "84:2b:2b:b4:59:c4",
+  "mac_dst_addr" : "84:2b:2b:b4:7d:3a",
+  "ethernet_type" : "",
+  "tcp_src_port" : "1504 (unknown)",
+  "tcp_dst_port" : "80 (HTTP)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.22",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.16",
+  "ipv4_src_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "ipv4_dst_addr_hostname" : "WAMPSERVER",
+  "char_data_payload" : "GET /favicon.ico HTTP/1.1\r\nHost: 10.176.138.16\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\nAccept: image/webp,*/*\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\nConnection: keep-alive\r\n\r\n"
+}, {
+  "timestamp" : "2019-12-05T04:26:05.184780Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "HTTP/1.1 200 OK\r\nDate: Thu, 05 Dec 2019 04:26:05 GMT\r\nServer: Apache/2.4.39 (Win64) PHP/7.2.18\r\nLast-Modified: Fri, 31 Dec 2010 14:40:06 GMT\r\nETag: \"3174f-498b5c73cdd80\"\r\nAccept-Ranges: bytes\r\nContent-Length: 202575\r\nKeep-Alive: timeout=5, max=97\r\nConnection: Keep-Alive\r\nContent-Type: image/x-icon\r\n\r\n\u0000\u0000\u0001\u0000\u0013\u0000\u0000\u0000\u0010\u0000\u0001\u0000\u0004\u0000û\u000E\u0000\u00006\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000\b\u0000Ô\u001F\u0000\u00001\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000 \u0000ª?\u0000\u0000\u00050\u0000\u0000\u0010\u0010\u0010\u0000\u0001\u0000\u0004\u0000(\u0001\u0000\u0000¯o\u0000\u0000\u0018\u0018\u0010\u0000\u0001\u0000\u0004\u0000è\u0001\u0000\u0000×p\u0000\u0000  \u0010\u0000\u0001\u0000\u0004\u0000è\u0002\u0000\u0000¿r\u0000\u000000\u0010\u0000\u0001\u0000\u0004\u0000h\u0006\u0000\u0000§u\u0000\u0000\u0010\u0010\u0000\u0000\u0001\u0000\b\u0000h\u0005\u0000\u0000\u000F|\u0000\u0000\u0018\u0018\u0000\u0000\u0001\u0000\b\u0000È\u0006\u0000\u0000w\u0000\u0000  \u0000\u0000\u0001\u0000\b\u0000¨\b\u0000\u0000?\u0000\u000000\u0000\u0000\u0001\u0000\b\u0000¨\u000E\u0000\u0000ç\u0000\u0000\u0010\u0010\u0000\u0000\u0001\u0000 \u0000h\u0004\u0000\u0000\u0000\u0000\u0018\u0018\u0000\u0000\u0001\u0000 \u0000\t\u0000\u0000÷£\u0000\u0000  \u0000\u0000\u0001\u0000 \u0000¨\u0010\u0000\u0000­\u0000\u000000\u0000\u0000\u0001\u0000 \u0000¨%\u0000\u0000'¾\u0000\u0000@@\u0000\u0000\u0001\u0000 \u0000(B\u0000\u0000Ïã\u0000\u0000HH\u0000\u0000\u0001\u0000 \u0000T\u0000\u0000÷%\u0001\u0000``\u0000\u0000\u0001\u0000 \u0000¨\u0000\u0000z\u0001\u0000\u0000\u0000\u0001\u0000 \u0000(\b\u0001\u0000'\u000F\u0002\u0000PNG\r\n\u001A\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0004\u0003\u0000\u0000\u0000®\\µU\u0000\u0000\u00000PLTE\u0000\u0000\u0000ÿ\u0000ÿ\u0000ÿ\u0000ò\u0000/\u0000\u001C\u0000]ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000ÿ\u0000¯æM´\u0000\u0000\u0000\u0010tRNS\u0000ÿÏ\u0016\\ËÉÑÅÉº×»âî\u0006õ\u0000\u0000\u000EjIDATxí]ÿo\u001CÅ\u0015¿^3'hÕµ\b\u0017ù<a/Ø:;QU(¦&ñ\u000F¡hñm+DµµO¢\"T¤? Jí\u000FåÇ\n\u0015Ùù¡\u0002¸\u0018D\u000B\nð/\u000B\u0002%\nv/ í\u000BjJäÄÝ;ÚÔQÎÛ=Û³;;oöËìîVÚ÷ãÍ÷Ù73oÞyó.I)¥Rú!âÕ\u0012LæÒiB\u000E$Î\u001Fµ/kF\b\u0000x£µº@&\u001FN9!gÍKK53\u0004û6\u0002Ó<qrdédØ¦§ÈÐzowQk\u001CN@\u000EH/^X©Ò\u0000SuB&c³/þª,sá-²/î0èä¹»Z\u0011ù+¸wµ\u0012O\u0006Öì+¾cDåß&ó¥8s\u0011©Å/CÎ|/\u0019`¼B\u000EDÖ÷/Çãß¦|W%ª\fÊw.Æfß¦ZD\u0019 ²\u0013\u0001{ëQDPzìm#\u0011þ\u0016í~¯$-\u00034~.þøS2¯W¤e0Ñg$Æß¢S\u0007$µ2\u001A¬~ÔÔHÚ§D\u0001(sR&\u0002Ò¯%7\u0001¶\b\u00176e´Fî0\u0005`A8\u001D^\u0004H?iöm\u0004ÉÐ\u00028ø»N\u0000h£a\u0005ð\u0004 ôaÈ -\u001A\u001DáooÃ\t`½#ü-Z\n%\u0002íP§ø+­!öE¤W;\u0006@¹\u0019B\u0004Ú Ñ9\u00003\u0017\u0003\u0001Òßê\u001CEé\t\u0014V¬v\u0012À\\#@\u0004H¯wÛ>+\u0005\bàs££\u0000ÌÿBÐÏ\u0007õ`¹~¤\u0004á_÷\u0005|\u001Eø\t\u0001\u0014ø\u0001¾ê\u0010\rú45j++\u0006^½æK#ÕÖÝ#¦9ý&ñ\u0019\tÃðnÙ:U!GL\u001Dñ¥±#£äïAFwÝ{\fÐCÍÌ¥\u0015Ë®\u000Bãah,4¼!àÙû½Ûz\u00006OiZ8ë¾4=]&¯x#èõV\u0005º×!9W\u0019\fÃÜî©ÿRÍs\"xAñeïïß/Ã¾M\u0013ÅÃ^BxÖk$Ñ\u0007ÿåçäÏ\u0019îå[â<ñh£\b1×ÞäÝNÜéaZá¸?DZ¤{¼c·Ýß("
+}, {
+  "timestamp" : "2019-12-05T04:26:05.184781Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "ñp¯n;Ô\u0006«¢Ú/ì|Ö¦\u000Eg\"þ°Ký\u0003Qåã1Îx<NØ°X¦ú\u001DºæZä#6Mõ\u0017D\u0000ª\u0000\u0015\u0005âÂ=ñ\u000E\\sâÝ­%Z\u0007Ù~8\u0007±9\u001CK\u0000X\u0013+/Úô\u0007\u00045où\u001B0\u0013ºYø¢@®úYXqæÝØ§ÍåÁÃ\u0002\u00047á$È§!Ð.i\r\fû\u0015n0]p\u0012dû`5ÃCeIQùA\bL\u0001s°ZÛFjówKÿ¹ç­P\u0004ù á·ß0_u\u000B\u0000\u0011B\u0002ÇdW?.\u001FªB\u0004\r ÛGàlåfJ\u000E­×\u0003\u0001Üvuäü\n;Çrú\fDÐÍw\u001E(+{]5ÆW\u0015åß\u0000n³DwÞ5TeÁ6ßâA\u000EÚ\"\u001B®C¾ö½Q8\u0000¸õ\u001B·\b\fÐyßâ²ðdü\u00043öÐÖ\u0010\u0003`Ñ2{2:%ð¸ç9\u0000ê\b_Ãl0sI\u001BªI\u0001ÀfeÌáû1\u001C\u0006·Â~\u0004j\u001D¨Ë\u0016Z\u0002xU÷1\u0018vOÜ!Påv6´ã±\u0006 ,3\u001C²ÐåäÌÜì\u0000_ÁpÖ¥V\u0015I\tX\u0012tºßÇ\u001D\u0014d1ö\u001A±'\u0004\u0000%?fÿ\u0006­a¼æj¦þ¯·×e`ÛJJ\u0006ñ#\u0002\u0015Ø%ø_n\u0000U¾Âu{\rhÄY!2\u0000nG\u0004Ùçøþ¯ØuÀB5¾°Ëõ>\u0007\u0014\u0000F\u00049¨\tnL2­rE¾|Ï\u0017v!#\u00009\u0000\u001B*\u0004/íeZe|qÓi;8\u0013\u0015áLd\u0015l¶.\u0000@\u000F9«Äuv-\u0007@¹¹\u000E$47®a\u0001ô\u001B\\±½\u0015»\u000Fïå\u0000`l«Ã\u001CØk\nßeZÝök¾x\nO\u001B\f@Á¶Q\u000B·{ü\u000F¦Õ7ùK²Ý¶Í¦»lEI\u0000»\u001Bô;2\u0002ç{L«oñ¥ëB\\:R\u0012R°§R\u0016ÜBtM:­\u001E\u0003\u0014\u0000ç³Ë\u0002Àó6\u0000àú.ïµ\u001B¡\u0007ª\\a\u000FE®¹ý[Y\u0000Êª½\fÀ\u0001Øq\u0007\u0000ÔCÔ\\Ð¯º~\u0006§\u001A\u001DêÂ\u001FY\nüI÷6)\r\u0000Ûà\t^\u0002/2\u0000îä\u0000àhÑ1·\n\u0006P°góS¼Â¨B\bÎ\u001Dôsw¼\u0004l\u0017è1Þêlq\u0000å\u0000\u0014*;%%NÉ\u0003(Ð\u0002õy\u000EÀÆ\u001C\u0000¯s\u0000º©à&¸K\\i\u0000JÎ&_­Ï\u001C\u0000'¹2{ä&¸Vò\u0000\u0014ºT~\u001D.ÎX5:wyS-\u0004¨í·Ë½ ­¿Úvñ¸{r§äjl\u0000õ\u0002ôCÁH@á\u000EÜã!#\u000F\u0000S\u0000\u0019à\u001E}Ç\u0000°hÉ/Ø\u0000ìuÈK\u0001p\u000B\u0000\u0015Û1î÷\bpÀ(\u0007\u0000\u0018\u0002\u0016ð7é\u0011\u0000ØÒ<ÆÏ4o\u0000¸¹SM\u0012À\u0012\u0012 b\u0003Gg\u0011\u00004é>\u0016\u001E\u0000¾N\u0001ð+Q\u0000Ð\rù!!H\u0012í|]\u0000\u001A_7t_I\u0001¤\u0000R\u0000)\u0014@\n \u0005ð?\r\u0007kÝÛ\t\u0000¿\u0018áØ8Ñ.®¤¹\u0016\b \u0004(\u0010ÀøYO\u0000h\u000BIû\"\u0010¾àn±FÏD½\u0001<zãr¿#7þk\u001E\u000E\u0004@Ö9¡Ñ«Jo\u0000È\u000Fy\u0003(Ö¸iCo9½\u0001D!\u001F\t\u0018î\u0002ül\n \u0005\u0002H\u0001¤\u0000R\u0000q\u0000 ¸ª$\n@ã0±F9ÎR¨N\u0000Ð\u001C36\u0000Þ$kî\b7=M²\bVq\u0004\u0000Éå)\u0014@\n \u0005\u0002H\u0001¤\u0000¾.\u0000×\u0003\u0001ÜÖY\u0000\u0014À\u0010\u0007@±%À\u0007ËÜLôÚÎÜ\tu\u0005ÏÒ0\r[¨òMöÇ\u0001À_^ãÙíX\u0015ÜÅ<¹/Øó°<\u0000e\u0002\u0000ï>¶¯#Â§·U4\u0018Â\u0007ó\u0014\u0000\u001Fû£Ô¶O¨ Nx;\f\u0017^P@¹HÜ;\u0001\f ìBi\u001C(J\u0004>PÇËG­\u0002µ§[O\f\t\u0000`G\u001Fñ!\u001C²T±|>ø>\u001B«ó¤X\\\u0001\u0005/P.>1$»@o4úèqÐb^þýÝð×6müåWü\u001A´ºZ\u000B\u0001 ÇGÑäéÚý\u0019d=ßWã\t³wåí¸8?\tðï÷Píõ\u0013øId?0ÕÀS2Æ5[áì`65vB^\u001A§¾Ã`'"
+}, {
+  "timestamp" : "2019-12-05T04:26:05.184852Z",
+  "mac_src_addr" : "84:2b:2b:b4:7d:3a",
+  "mac_dst_addr" : "84:2b:2b:b4:59:c4",
+  "ethernet_type" : "",
+  "tcp_src_port" : "80 (HTTP)",
+  "tcp_dst_port" : "1504 (unknown)",
+  "ipv4_src_addr_hostaddress" : "10.176.138.16",
+  "ipv4_dst_addr_hostaddress" : "10.176.138.22",
+  "ipv4_src_addr_hostname" : "WAMPSERVER",
+  "ipv4_dst_addr_hostname" : "se71861.campus.ad.utdallas.edu",
+  "char_data_payload" : "+wÒð\u0002À\u0007I\u0013¶»âÙX\u0000o\u0018\u001E­4 \bd)O5±z+)|æ\u0000à#»í§`èÇ ÊK*ô*Eç»7Î8\u0000øÍU¹B\u001DÇßyÕöS~é°1¥\u0003<MZ¤7ã\u0001pé@~\u0013\u0016\u0000ÀM\u001A}¤ÇÌËb«4[yá@\\qË:pwâ¿iÇ÷/u\u0000dä\u000Bm;\n\u001C\u0006e\u0001L\u000B¥Î\u0000¸çb+\fñH\t\u0010ÌWm\u0000ý|\u0013úÉ|/ÜS±\u0001ÄQÆ¸Û~Ò\u0005L>b®ín\u0001Ïäí×xj¬ôHÌ+\u0017\u0010gøO&û2ÇÅyì\u0015!\u0014u×í9\bÓ[°O<²×øRçeò_j\u0000ºf¿\u0017sÑÄmãgÒå¼3º\u0012?µ¡Û\u001Cîã\u000BÏ°\u0000&ÂïÚý×ùó^ßÙ÷\rí\u0017\u000E|qÞ^?\u0019}#*\u001Dm \u0002\u0017Y\u0000èI/ÿÊ\u001A5S ÞgóZÀ\r@ðæµpÔ~£Dp4\u0004:ÏNá\u0013\u0017÷\u0010d²`Î}\n\u001E\"<Ì¼\u0004¦Áê!\u000BÀ\u001B|9g¯@$Ò<ç¼AÏ\u0015gøÒnîÍ)\u0014Ñq'^E½ã°<6{Dâ\u0015w8\fOo85ýê\u0016ÒÇï®\u0002}Î§çùØáI§\u0001qÊZO\u0010;)Æ]ìÃñqXé\"\u0017\u0010UüYhtHOD1ÿ@È!Â]l®\u0013Ïùä©PW[}¿~°\nvL\\8UD£¿³1w\u0015þ)Î§×O¯­\u001Dq/3IÈ\u0010\u0018Gãrûqbt\u0011H¯wÍÂ \tò\u001Cõ¼çæÉõÁ1xÑ5Lú?³¾76WV·¹äÆ/TÙÖ¦;\rþ>\u000Fqí/,\u0002Ai¹ò\u0010¡2)2\tÌ\u0013};\u0019Æ40yÍæ<)»\u0006\b\u001CL\u0011Hà\u001A\rW-¤ÅO®ìÜzÖuFÏ\u000EÕî^ÙÎKö}ó^r`ÒÕ\u000E[)Ìs>DyH6Ý\t=P©4Eï}§ðµL;\u0014LÓ÷m\u0017¹K¶>\r\u0002À§3<\t2\u0010(øY^PÞn\u000F WÓ@´è`/ëç«eÐS\u0002r>f.-`¢ì\\ÙïÐ\u0014LYs¤\béÀÖQÚzZ\u0010\u0018©ö\t<ñV}<\u0019x¤½\u0015å#Ê\rUaEüqÌÌçú½Ò#Ê²D¶\u001FÞ\bÎ«éGÚ °tÚ½\u0010v*öÄÍÑ\u00189JãüSÊm\u0000\ráÔ\u0012\u001Bùè©×5ò¼x³f\u0012t°Õ=2\u001E\u000FH¬éEHÓ\u000F\n;TZGÅ-ô\u0019¡¼1qý\u0000Êb¯\u000E\u000F{\u0014&)Ø¦wåGAÛG\u0013ÀÒB\u0015¯6b'l®÷´|z´\u001C!ë=FÀsR\u0001\u000FÑP$DJ#µÿtä\u001Ey¬6©W=\u001A\u0015¥þ\u0004\u0000·M/·\u001EXc\u000EåF½D \u0018¯\\(ZF\u0018æÖÇ×\u0016g¼zÂ½>\u0001òY2Û\u0010Z¯0©\n§Hñ_ÂVÃO¹£ª§\f\u0014ÿð®ªyù\u0019_úÐüû'\u001E®Â\u000Euù\u0002 ÀKæI Ö¡à©û*Vý\\P\u0007\u0001\u0000\u0002\u000F×»ý3^E\u0006d¢\u0014¯\u0018\u0011xï(A6V9Þát \u0005\b E-ßIþà?ôPÿë\u0002ûmÜx\u0007EÐ\u0003\u001C\r¡\b:Æß¸7q%ÌW\bá®p\u001BºØ)\u0004pÖ%uGáC¡³¾ªÉþÊ6ac6¬yÓ\u0003·¤(\u0000á³¾ªýç_È{Ó?N\u001CÀîa\u0019»V=ècD¢ê\u001BO¿\u0012R\u000584µäZ4Ö¥\u001DÌ\u001CYq[Æ\u0011î\u001Eöð\u0006}H-.'Æß¬DÉü­Åj2\u0000FêÑ\u000E9t²\bÿÝu¿¿Lð\u0015AqÎ×Â\u000FExc%8Ç°\u0007ô\u0001x,\r`­¬EäßÁÐÈL,öæÉ{¢eÞß!¤\u0013áMIèÏoFL¼ÏÈ\\zÞÈÞ\u0018¹\u0010ýË\u0011\u0002)®`ù¿¸T\fwÏ&òGªåï/Èß_wßsa)ïß\"k\u001CÎµ XPH\u0018[N²ùLÿöZ&C£Å+WÅ1ÁËÞ"
+} ]
